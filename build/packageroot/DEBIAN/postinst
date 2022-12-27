@@ -1,0 +1,4 @@
+#!/bin/sh
+
+systemctl enable unifi-blueberry-core
+systemctl start unifi-blueberry-core

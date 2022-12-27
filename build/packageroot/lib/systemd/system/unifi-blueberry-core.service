@@ -1,0 +1,9 @@
+[Unit]
+Description=UniFi Blueberry core service
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/unifi-blueberry-core
+
+[Install]
+WantedBy=multi-user.target

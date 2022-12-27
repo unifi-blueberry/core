@@ -1,0 +1,4 @@
+#!/bin/sh
+
+systemctl disable unifi-blueberry-core
+systemctl stop unifi-blueberry-core
