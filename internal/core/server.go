@@ -11,6 +11,19 @@ import (
 
 type Server struct{}
 
+func (s *Server) GetVersionInfo(
+	_ context.Context,
+	_ *connect.Request[corev1alpha1.GetVersionInfoRequest],
+) (*connect.Response[corev1alpha1.GetVersionInfoResponse], error) {
+
+	return connect.NewResponse(&corev1alpha1.GetVersionInfoResponse{
+		Version:   BuildVersion,
+		Platform:  BuildPlatform,
+		GitCommit: BuildGitCommit,
+		GoVersion: BuildGoVersion,
+	}), nil
+}
+
 func (s *Server) GetPlatformInfo(
 	_ context.Context,
 	_ *connect.Request[corev1alpha1.GetPlatformInfoRequest],

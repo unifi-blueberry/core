@@ -17,10 +17,10 @@ COPY internal internal
 RUN go build \
     -o bin/unifi-blueberry-core \
     -ldflags "\
-      -X internal/core.BuildVersion=$PACKAGE_VERSION \
-      -X internal/core.BuildPlatform=$(go env GOOS)/$(go env GOARCH) \
-      -X internal/core.BuildGitCommit=$(git rev-list -1 HEAD) \
-      -X internal/core.BuildGoVersion=$(go env GOVERSION)"
+      -X github.com/unifi-blueberry/core/internal/core.BuildVersion=$PACKAGE_VERSION \
+      -X github.com/unifi-blueberry/core/internal/core.BuildPlatform=$(go env GOOS)/$(go env GOARCH) \
+      -X github.com/unifi-blueberry/core/internal/core.BuildGitCommit=$(git rev-list -1 HEAD) \
+      -X github.com/unifi-blueberry/core/internal/core.BuildGoVersion=$(go env GOVERSION)"
 
 ## package
 ##

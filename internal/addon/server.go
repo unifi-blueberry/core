@@ -2,9 +2,8 @@ package addon
 
 import (
 	"context"
+	"errors"
 	"github.com/bufbuild/connect-go"
-	"gorm.io/driver/sqlite"
-	"gorm.io/gorm"
 	"net/http"
 
 	"buf.build/gen/go/unifi-blueberry/addon/bufbuild/connect-go/addon/v1alpha1/addonv1alpha1connect"
@@ -24,21 +23,5 @@ func (s *Server) ListAddons(
 	_ *connect.Request[addonv1alpha1.ListAddonsRequest],
 ) (*connect.Response[addonv1alpha1.ListAddonsResponse], error) {
 
-	db, err := gorm.Open(sqlite.Open("gorm.db"), &gorm.Config{})
-	if err != nil {
-		return nil, err
-	}
-
-	err = db.AutoMigrate(&addonv1alpha1.Addon{})
-	if err != nil {
-		return nil, err
-	}
-
-	res := connect.NewResponse(&addonv1alpha1.ListAddonsResponse{
-		Addons: []*addonv1alpha1.Addon{
-			{Name: "podman"},
-		},
-	})
-
-	return res, nil
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("todo"))
 }
